@@ -9,6 +9,7 @@ while True:
         break
 
     #detección de objetos
+
     classes, detections, tupla_dimensiones = obj_det.check(frame=frame_input)
     width = tupla_dimensiones[0]
     height = tupla_dimensiones[1]
@@ -31,8 +32,8 @@ while True:
             rostro = cv2.resize(rostro,(150,150),interpolation= cv2.INTER_CUBIC)
             result = face_recognizer.predict(rostro)
 
-            cv2.putText(frame_input,'{}'.format(result),(x,y-5),1,1.3,(255,255,0),1,cv2.LINE_AA)
-        
+            #cv2.putText(frame_input,'{}'.format(result),(x,y-5),1,1.3,(255,255,0),1,cv2.LINE_AA)
+
             # LBPHFace
             if result[1] < 70:
                 cv2.putText(frame_input, "godines", (x,y-25),2,1.1,(0,255,0),1,cv2.LINE_AA)
@@ -41,13 +42,11 @@ while True:
                 cv2.putText(frame_input,'Desconocido',(x,y-20),2,0.8,(0,0,255),1,cv2.LINE_AA)
                 cv2.rectangle(frame_input, (x,y),(x+w,y+h),(0,0,255),2)
     
-    cv2.imshow("Frame", frame_input)
-    if cv2.waitKey(1) & 0xFF == 27:
-        break
-    
     past_cap = cap #detestable, absolutamente repugnante, hambreadisimo el interpretador, no deberia ser vital estar en cache.
 
-
+    cv2.imshow("Frame", frame_input)
+    cv2.waitKey(1)
+    
 
 cap.release()
 cv2.destroyAllWindows()

@@ -27,8 +27,7 @@ class obj_det:
 
     def check(frame):
         # ----------- lectura de la imagen y preprocesado -----------
-        #cap = cv2.VideoCapture("media/9dejulio_video.mp4")
-        height, width, _ = frame.shape
+        height, width, _ = frame.shape #aun no entiendo que cosa hace el guion bajo aca, pero el interpretador mugroso me lo pide
         frame_resized = cv2.resize(frame, (300, 300))
 
         # crear un blob

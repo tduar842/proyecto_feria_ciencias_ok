@@ -1,17 +1,7 @@
 import cv2
-import os
 
-dataPath = "media/captura_data" #Cambia a la ruta donde hayas almacenado Data
-imagePaths = os.listdir(dataPath)
-print('imagePaths=',imagePaths)
-
-#face_recognizer = cv2.face.EigenFaceRecognizer_create()
-#face_recognizer = cv2.face.FisherFaceRecognizer_create()
 face_recognizer = cv2.face.LBPHFaceRecognizer_create()
-
 # Leyendo el modelo
-#face_recognizer.read('modeloEigenFace.xml')
-#face_recognizer.read('modeloFisherFace.xml')
 face_recognizer.read('modeloLBPHFace.xml')
 
 class rec_facial:
