@@ -14,3 +14,4 @@ IF %programa_corriendo%==9 (start "" %path_python% "C:\Users\PC GAMER 2025\Downl
 IF %programa_corriendo%==10 (start "" %path_python% "C:\Users\PC GAMER 2025\Downloads\proyecto_feria\capitulo_5\reconocimiento_facial.py")
 IF %programa_corriendo%==11 (start "" %path_python% "C:\Users\PC GAMER 2025\Downloads\proyecto_feria\capitulo_6\figuras_geometricas_deteccion.py")
 IF %programa_corriendo%==12 (start "" %path_python% "C:\Users\PC GAMER 2025\Downloads\proyecto_feria\capitulo_7\figuras_geometricas_colores_deteccion.py")
+IF %programa_corriendo%==13 (start "" %path_python% "C:\Users\PC GAMER 2025\Downloads\proyecto_feria\py_vision\main.py")
