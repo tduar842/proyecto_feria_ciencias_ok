@@ -37,8 +37,9 @@ class RRTStar:
         for _ in range(num_obstacles):
             ox = random.uniform(2, self.map_size[0] - 2)
             oy = random.uniform(2, self.map_size[1] - 2)
-            size = random.uniform(1, 3)
-            obstacles.append((ox, oy, size))
+            width = random.uniform(1, 3)
+            height = random.uniform(1, 3)
+            obstacles.append((ox, oy, width, height))
         return obstacles
 
     def setup_visualization(self):
@@ -47,16 +48,16 @@ class RRTStar:
         self.ax.plot(self.goal.x, self.goal.y, 'ro', label='Goal')
         self.ax.set_xlim(0, self.map_size[0])
         self.ax.set_ylim(0, self.map_size[1])
-        self.ax.grid(True)
+        #self.ax.grid(True)
 
         # Draw the randomly generated obstacles
         self.draw_obstacles()
 
     def draw_obstacles(self):
         """Draw the static obstacles on the map."""
-        for (ox, oy, size) in self.obstacles:
-            circle = plt.Circle((ox, oy), size, color='r')
-            self.ax.add_artist(circle)
+        for (ox, oy, width, height) in self.obstacles:
+            rectangle = plt.Rectangle((ox, oy), width, height, edgecolor='blue', color='blue')
+            self.ax.add_artist(rectangle)
 
     def plan(self):
         """Main RRT* planning loop."""
@@ -95,9 +96,29 @@ class RRTStar:
 
     def is_collision_free(self, node):
         """Check if the node is collision-free with respect to obstacles."""
-        for (ox, oy, size) in self.obstacles:
-            if (node.x - ox) ** 2 + (node.y - oy) ** 2 <= size ** 2:
+        for (ox, oy, width, height) in self.obstacles:
+            horizontal_collision = False
+            vertical_collision = False
+
+            point_radius = 0.5
+            point_left = node.x-point_radius
+            point_right = node.x+point_radius
+            point_bottom = node.y-point_radius
+            point_top = node.y+point_radius
+
+            rect_left = ox - width/2
+            rect_right = ox + width/2
+            rect_bottom = oy - height/2
+            rect_top = oy + height/2
+
+            if rect_left < point_right and point_left < rect_right:
+                horizontal_collision = True
+            if rect_bottom < point_top and point_bottom < rect_top:
+                vertical_collision = True
+
+            if horizontal_collision == True and vertical_collision == True:
                 return False
+            
         return True
 
     def find_neighbors(self, new_node):
