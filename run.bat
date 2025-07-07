@@ -15,3 +15,4 @@ IF %programa_corriendo%==10 (start "" %path_python% "C:\Users\PC GAMER 2025\Down
 IF %programa_corriendo%==11 (start "" %path_python% "C:\Users\PC GAMER 2025\Downloads\proyecto_feria\capitulo_6\figuras_geometricas_deteccion.py")
 IF %programa_corriendo%==12 (start "" %path_python% "C:\Users\PC GAMER 2025\Downloads\proyecto_feria\capitulo_7\figuras_geometricas_colores_deteccion.py")
 IF %programa_corriendo%==13 (start "" %path_python% "C:\Users\PC GAMER 2025\Downloads\proyecto_feria\py_vision\main.py")
+IF %programa_corriendo%==14 (start "" %path_python% "C:\Users\PC GAMER 2025\Downloads\proyecto_feria\py_vision\rrt.py")
